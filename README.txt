@@ -1,7 +1,7 @@
 === ToolWine Reviews & Ratings ===
 Contributors: bedas
 Donate link: https://www.tukutoi.com/
-Tags: tw-rar.it, helper plugin, ratings, types, forms
+Tags: ToolWine Add-On, ratings, reviews, Toolset Types, Toolset Forms
 Requires at least: 5.7
 Tested up to: 5.7
 Stable tag: 1.0.0
