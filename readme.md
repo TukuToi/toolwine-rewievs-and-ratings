@@ -20,8 +20,11 @@ Upload and activate like any other plugin.
 
 Plugin reuqires Toolset Types and Forms.
 
+Plugin requires following post Type to be created:
+`user-rating` (The post type that actually holds the users reviews.)
+
 Plugin requires following Toolset Fields created (type: number):
-**Posts to be rated**
+**Posts to be rated Post Fields**
 
 `single-total-rating` Stores the total of ratings given to a post (total rating, not average, of a book, or else).
 
@@ -33,7 +36,7 @@ Plugin requires following Toolset Fields created (type: number):
 
 `reccomend-total-rating` Stores the total of all Recommends given to a post (the total Recommends for a book, or else)
 
-**Rating Posts**
+**user-rating Post Type Post Fields**
 
 `single-rating-average` Stores the average of rating added in a single user rating post (the average rating of a rating post)
 
@@ -42,6 +45,8 @@ Plugin requires following Toolset Fields created (type: number):
 **Usage**
 
 Intended to work inside a single Post which has to be rated.
+Create a CRED Form for new user-rating posts, follow this doc https://www.tukutoi.com/doc/how-to-create-a-rating-system-using-toolset/ to create the star inputs.
+Then insert CRED form like shown below to a post that shall be rated.
 
 ```
 <!-- Add Rating System -->
@@ -56,5 +61,11 @@ Intended to work inside a single Post which has to be rated.
 [/wpv-conditional]
 ```
 
-By default addresses only ONE form with ID `7199`
+You may later display ratings in Views, and sort posts by their rating fields.
+
+By default addresses only ONE CRED Form with ID `7199`
 This can be edited/changed in `/public/class-tw-rar-public.php`, method `set_rating_forms`
+
+Note that the plugin assumes all fields to be existing like aboveshown.
+
+Further customization is possible of course, either contact me, or customize on your own in a Fork.
