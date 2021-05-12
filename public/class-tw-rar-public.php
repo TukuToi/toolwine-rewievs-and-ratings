@@ -140,6 +140,15 @@ class Tw_Rar_Public {
 	private $recommend_fields;
 
 	/**
+	 * The User Rating Post Type.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $rating_cpt    The User Rating Post Type.
+	 */
+	private $rating_cpt;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -150,6 +159,8 @@ class Tw_Rar_Public {
 
 		$this->plugin_name 			= $plugin_name;
 		$this->version 				= $version;
+
+		$this->rating_cpt 			= 'user-rating';
 
 		$this->prefix 				= 'wpcf-';
 
@@ -274,7 +285,7 @@ class Tw_Rar_Public {
 
 		$args = array(
 			'post_status' 	=> 'publish',
-		    'post_type' 	=> array( 'user-rating' ),
+		    'post_type' 	=> array( $this->rating_cpt ),
 		    'author' 		=> $user_id,
 		    'meta_key'   	=> $this->belongs_to,
     		'meta_value' 	=> $post_id,
@@ -579,6 +590,46 @@ class Tw_Rar_Public {
 		return $post_id;
 
 	}
+
+	/**
+	 * ShortCode calback to round and format numeric values.
+	 *
+	 * @param   $atts 		array 	WordPress ShortCodes attributes.
+	 * @param 	$content 	mixed 	WordPress Enclosing ShortCode content.
+	 * @since   1.0.0
+	 * @return  $post_id 	int 	the Post ID of rating to delete.
+	 */
+	public function round_values_shortcode($atts, $content){
+
+        //Build attributes
+		$atts = shortcode_atts( 
+			array(
+				'round' 	=> 2,//by default we round 2 decimals
+				'd_sep'	 	=> '.',//by default we use Dot as decimal separator
+				'k_sep'		=> '\'',//by default we use ' as thousand separator
+	 		), 
+			$atts, 
+			'round_values' 
+		);
+	        
+	    //Expand eventual shortcodes in the ShortCode content. Use wpv_do_shortcode so it expands even nested shortcodes.
+	    $content = wpv_do_shortcode($content);
+	        
+	    //if no numeric value was passed, then abort and throw a error.
+		if( !is_numeric( $content ) ){
+			$rounded_value = 'You passed non-numeric values to the shortcode!';
+		}
+		else{//all good
+			$rounded_value = round($content, $atts['round']);//here we could add 3rd parameter to round up, down, even or odd
+		}
+	  
+	    //format float to french format
+	    $rounded_value = number_format($rounded_value, $atts['round'], $atts['d_sep'], $atts['k_sep']);
+
+	    //return the rounded value
+		return $rounded_value;
+
+	}
 	
 	/**
 	 * Register ShortCodes
@@ -588,8 +639,9 @@ class Tw_Rar_Public {
 	 */
 	public function register_shortcodes(){
 
-		add_shortcode( 'has_user_reviewed', array($this, 'has_user_reviewed_shortcode') );
-		add_shortcode( 'rating_to_delete', array($this, 'rating_current_user_post_shortcode') );
+		add_shortcode( 'has_user_reviewed', array( $this, 'has_user_reviewed_shortcode') );
+		add_shortcode( 'rating_to_delete', array( $this, 'rating_current_user_post_shortcode') );
+		add_shortcode( 'format_and_round', array( $this, 'round_values_shortcode') );
 
 	}
 
