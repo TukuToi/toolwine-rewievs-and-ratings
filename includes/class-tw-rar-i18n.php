@@ -35,7 +35,7 @@ class Tw_Rar_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'tw-rar-worker',
+			'tw-rar',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
