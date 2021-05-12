@@ -43,7 +43,7 @@ define( 'TW_RAR_VERSION', '1.0.0' );
  */
 function activate_tw_rar() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-tw-rar-activator.php';
-	ToolWine Reviews & Ratings_Activator::activate();
+	Tw_Rar_Activator::activate();
 }
 
 /**
@@ -52,7 +52,7 @@ function activate_tw_rar() {
  */
 function deactivate_tw_rar() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-tw-rar-deactivator.php';
-	ToolWine Reviews & Ratings_Deactivator::deactivate();
+	Tw_Rar_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_tw_rar' );

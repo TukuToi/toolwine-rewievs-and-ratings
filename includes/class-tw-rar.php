@@ -68,11 +68,11 @@ class Tw_Rar {
 	 */
 	public function __construct() {
 		if ( defined( 'TW_RAR_VERSION' ) ) {
-			$this->version = Tw_Rar_VERSION;
+			$this->version = TW_RAR_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'tw-rar-worker';
+		$this->plugin_name = 'tw-rar';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -103,24 +103,24 @@ class Tw_Rar {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tw-rar-worker-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tw-rar-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tw-rar-worker-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-tw-rar-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-tw-rar-worker-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-tw-rar-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-tw-rar-worker-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-tw-rar-public.php';
 
 		$this->loader = new Tw_Rar_Loader();
 
