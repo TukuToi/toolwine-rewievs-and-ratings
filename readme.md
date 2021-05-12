@@ -57,4 +57,4 @@ Intended to work inside a single Post which has to be rated.
 ```
 
 By default addresses only ONE form with ID `7199`
-This can be edited/changed in `/public/class-tw-rar-worker-public.php`, method `set_rating_forms`
+This can be edited/changed in `/public/class-tw-rar-public.php`, method `set_rating_forms`
