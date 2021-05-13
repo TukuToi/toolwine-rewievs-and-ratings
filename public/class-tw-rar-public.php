@@ -160,19 +160,20 @@ class Tw_Rar_Public {
 		$this->plugin_name 			= $plugin_name;
 		$this->version 				= $version;
 
-		$this->rating_cpt 			= 'user-rating';
+		$this->rating_cpt 			= apply_filters( 'tw_rar_cpt',  'user-rating' );
 
 		$this->prefix 				= 'wpcf-';
 
-		$this->single_avrg_field	= $this->prefix .'single-rating-average';
-		$this->belongs_to 			= $this->prefix .'belongs-to';
+		//All filters @since 1.1.0
+		$this->single_avrg_field	= apply_filters( 'tw_rar_sra',  $this->prefix .'single-rating-average' );
+		$this->belongs_to 			= apply_filters( 'tw_rar_bt',  $this->prefix .'belongs-to' );
 
-		$this->post_avrg_field 		= $this->prefix .'single-average-rating';
-		$this->post_all_votes 		= $this->prefix .'single-total-votes';
-		$this->post_total 			= $this->prefix .'single-total-rating';
+		$this->post_avrg_field 		= apply_filters( 'tw_rar_sar',  $this->prefix .'single-average-rating' );
+		$this->post_all_votes 		= apply_filters( 'tw_rar_stv',  $this->prefix .'single-total-votes' );
+		$this->post_total 			= apply_filters( 'tw_rar_str',  $this->prefix .'single-total-rating'); 
 
-		$this->rec_avrg_rating 		= $this->prefix .'recommend-average-rating';
-		$this->rec_total_rating 	= $this->prefix .'recommend-total-rating';
+		$this->rec_avrg_rating 		= apply_filters( 'tw_rar_rar',  $this->prefix .'recommend-average-rating' );
+		$this->rec_total_rating 	= apply_filters( 'tw_rar_rtr',  $this->prefix .'recommend-total-rating' );
 
 		$this->forms 				= $this->set_rating_forms();
 
@@ -198,6 +199,10 @@ class Tw_Rar_Public {
 			'rating6' 	=> 'rate6',
 		);
 
+		//array('types_field_name' => 'form_input_name')
+		//@since 1.1.0
+		$fields = apply_filters( 'tw_rar_rating_fields', $fields );
+
 		return $fields;
 
 	}
@@ -217,6 +222,10 @@ class Tw_Rar_Public {
 			'recommend' => 'rate_racc',	
 		);
 
+		//array('types_field_name' => 'form_input_name')
+		//@since 1.1.0
+		$fields = apply_filters( 'tw_rar_recommend_field', $fields );
+
 		return $fields;
 
 	}
@@ -232,6 +241,10 @@ class Tw_Rar_Public {
 		$forms = array(
 			'books_ratings' => 7199,
 		);
+
+		//array('form_name' => FORM_ID )
+		//@since 1.1.0
+		$forms = apply_filters( 'tw_rar_forms', $forms );
 
 		return $forms;
 
