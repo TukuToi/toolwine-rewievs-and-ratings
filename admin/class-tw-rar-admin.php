@@ -89,4 +89,16 @@ class Tw_Rar_Admin {
 
 	}
 
+	public function add_quicktags_forms(){
+		echo sprintf(
+            '<button %1$s %2$s %3$s %4$s >%5$s %6$s</button>',
+            'id="' . esc_attr( 'tw_rar_insert_fields_id' ) . '"',
+            'class="' . esc_attr( 'tw_rar_insert_fields_class button button-secondary' ) . '"',
+            'title="' . esc_attr( 'Insert Rating Fields' ) . '"',
+            'data-target="content"',
+            '<span class="dashicons dashicons-star-half" style="vertical-align:text-top"></span>',
+            esc_html( __( 'Add Rating Fields', 'tw_rar' ) )
+        );
+	}
+
 }

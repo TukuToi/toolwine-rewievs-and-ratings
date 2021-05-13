@@ -157,6 +157,7 @@ class Tw_Rar {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_filter( 'wpv_custom_inner_shortcodes', $plugin_admin, 'add_toolset_shortcodes' );
+		$this->loader->add_action( 'cred_content_editor_print_toolbar_buttons', $plugin_admin, 'add_quicktags_forms' );
 
 	}
 
