@@ -63,6 +63,9 @@ Assuming `ANY FLOAT VALUE` above will be `2.5649` this would return `2,565`
 Arguments are `d_sep` and `k_sep` to determine separators for decimal and thousand while `round` can be used to determine how many decimals to use.
 
 == Changelog ==
+
+= 1.2.0 =
+* Added "Insert Rating Fields" Button in CRED Forms (Text/Expert Mode)
  
 = 1.1.0 =
 * Introduced Filters to pass custom fields and forms to the core code.
