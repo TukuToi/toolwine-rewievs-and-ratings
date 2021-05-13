@@ -83,6 +83,7 @@ class Tw_Rar_Admin {
 
 		$shortcodes[] = 'has_user_reviewed';
 		$shortcodes[] = 'rating_to_delete';
+		$shortcodes[] = 'format_and_round';
     	
     	return $shortcodes;
 
